@@ -30,6 +30,11 @@
   </h2>
 	<a class="btn btn-large btn-primary" href="">Sign up now!</a>
 	</div>
+  <section>
+    {% for f in food %}
+    <p>{{f.name}}</p>
+    {% endfor %}
+  </section>
 	<footer class="footer">
  
   <nav>

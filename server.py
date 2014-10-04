@@ -1,6 +1,11 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 from scraper import *
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
-db = SQLAlchemy(app)
+from database_setup import app, db, Food
+@app.route("/")
+def display():
+	food = Food.query.all()
+	return render_template('index.html', food = food)
+
+if __name__ == "__main__":
+    app.run(debug=True)
