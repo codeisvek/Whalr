@@ -8,3 +8,5 @@ Thumbs.db
 **/.sass-cache
 **/.sass-cache/*
 __pycache__/
+__pycache__/**
+*.pyc
