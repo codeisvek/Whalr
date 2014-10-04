@@ -7,6 +7,7 @@ def make_soup(url):
 def get_food ():
 	soup = make_soup(start_url)
 	return [a.attrs.get('href') for a in soup.select('.day a')]
+#find dates
 def serve_day(soup):
 	months = {
 		'January': 1,
@@ -24,14 +25,31 @@ def serve_day(soup):
 	}
 	days = re.findall(r'\w+,\s(\w+)\s(\d+),\s(\d+)', soup.select('.title1 i')[0].get_text())
 	return datetime.date(int(days[0][2]), months[days[0][0]], int(days[0][1]))
+#find food names
 def find_food(soup):
-	return [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
+	#name = [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
+	#location = [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
+	#time = [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
+	foods = []
+	x = 0
+	y = 0
+	for rows in soup.select('td#content tr[valign=top]'):
+		timeofday = x
+		names = []
+		location = []
+		for cells in rows.select('td'):
+			location = y
+			for a in cells.select('a'):
+				foods.append([a.get_text(), x, y])
+			y = (y + 1) % 4
+		x+=1
+	return foods
+#links to nutritional facts
 def find_food_links(soup):
 	return [a.attrs.get('href') for a in soup.select('td#content tr[valign=top] td a')]
-def find_food_info(food_url):
+#nutritional facts
+def find_food_info(soup):
 	food_info = {}
-	new_url = re.sub(r'web/\*/', '', food_url)
-	soup = make_soup(base_url + new_url)
 	try:
 		food_info['name'] = re.sub(r'[\r\n\xa0]+', '', soup.select('div[align=left]')[0].get_text().strip())
 		food_info['calories'] = int(re.sub(r'\D+', '', soup.select('font[size="3"] b')[0].get_text()))
