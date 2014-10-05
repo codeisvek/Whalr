@@ -6,7 +6,7 @@ from .database_setup import db, Food
 from .forms import LoginForm
 from .models import User
 from .scraper import *
-
+import datetime
 @app.route('/')
 @app.route('/index')
 #@login_required
@@ -26,7 +26,10 @@ def index():
 @app.route('/app')
 @login_required
 def view_app():
-    return render_template('app.html')
+    food = Food.query.filter_by(lastServed = datetime.date.today())
+    places = ['Crossroads', 'Cafe 3', 'Foothill', 'Clark Kerr']
+    times = ['breakfast', 'lunch', 'dinner']
+    return render_template('app.html', food = food, places=places, times=times)
 @app.route('/login', methods=['GET', 'POST'])
 @oid.loginhandler
 def login():

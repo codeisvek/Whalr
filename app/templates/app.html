@@ -29,7 +29,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
-</nav>
+    </nav>
     <div id="wrapper">
 
         <!-- Sidebar -->
@@ -37,33 +37,37 @@
 
         <div id="sidebar-wrapper">
             <div id="logo">
-            <img src="../static/img/biglogo.png" class="img-responsive" />
-        </div>
+                <img src="../static/img/biglogo.png" class="img-responsive" />
+            </div>
             <nav class="bs-docs-sidebar">
-        <ul id="sidebar" class="nav nav-stacked">
-            <li>
-                <a href="#TodayMenu">Today's Menu</a>
-                <ul class="nav nav-stacked">
-                    <li><a href="#CrossRoads">Crossroads</a></li>
-                    <li><a href="#Cafe3">Cafe 3</a></li>
-                    <li><a href="#Foothill">Foothill</a></li>
-                    <li><a href="#CKC">Clark Kerr Dining</a></li>
+                <ul id="sidebar" class="nav nav-stacked">
+                    <li>
+                        <a href="#TodayMenu">Today's Menu</a>
+                        <ul class="nav nav-stacked">
+                            <li><a href="#CrossRoads">Crossroads</a>
+                            </li>
+                            <li><a href="#Cafe3">Cafe 3</a>
+                            </li>
+                            <li><a href="#Foothill">Foothill</a>
+                            </li>
+                            <li><a href="#CKC">Clark Kerr Dining</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#manageFood">Manage Krill</a>
+                    </li>
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#addFood">Add Krill</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Log Out</a>
+                    </li>
+                    <li>
+                        <a href="#">Learn More</a>
+                    </li>
                 </ul>
-            </li>
-            <li>
-                <a href="#" data-toggle="modal" data-target="#manageFood">Manage Krill</a>
-            </li>
-            <li>
-                <a href="#" data-toggle="modal" data-target="#addFood" >Add Krill</a>
-            </li>
-            <li>
-                <a href="/logout">Log Out</a>
-            </li>
-            <li>
-                <a href="#">Learn More</a>
-            </li>
-        </ul>
-    </nav>
+            </nav>
         </div>
         <!-- /#sidebar-wrapper -->
 
@@ -72,135 +76,161 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-9 fakenav" id="TodayMenu">
-                        <a href="#menu-toggle" id="menu-toggle"><span class="glyphicon glyphicon-align-justify menu-icon"></span></a>  WHALR
+                        <a href="#menu-toggle" id="menu-toggle">
+                            <span class="glyphicon glyphicon-align-justify menu-icon"></span>
+                        </a>WHALR
                     </div>
                     <div class="col-lg-9 data">
-                    <div class="alert alert-success" role="alert">
-                        <strong>You've got Krill!</strong><br />
-                        Favorite food <strong>Vegan Tofu Steak</strong> is avalible at <strong>Clark Kerr Dining</strong> today at <strong>lunch!</strong><br />
-                        Favorite food <strong>Soymilk Shake</strong> is avalible at <strong>Foothill Dining</strong> today at <strong>dinner!</strong>
+                        <div class="alert alert-success" role="alert">
+                            <strong>You've got Krill!</strong>
+                            <br />Favorite food
+                            <strong>Vegan Tofu Steak</strong>is avalible at
+                            <strong>Clark Kerr Dining</strong>today at
+                            <strong>lunch!</strong>
+                            <br />Favorite food
+                            <strong>Soymilk Shake</strong>is avalible at
+                            <strong>Foothill Dining</strong>today at
+                            <strong>dinner!</strong>
 
-                    </div>
+                        </div>
                         <h2>Today's Menu</h2>
+                        {% for place in food|groupby('location') %}
+                            <h2>{{places[place.grouper|int]}}</h2>
+                            {% for time in place.list|groupby('timeOfDay') %}
+                                {% if time.grouper != loop.index0 %}
+                                    <img src="../static/img/sadwhale.png" class="img-responsive" />
+                                    <p>Nothing. Ever. Therefore Whalr is sad.</p>
+                                {% endif %}
+                                <h3>{{times[time.grouper]}}</h3>
+                                
+                                {% for p in time.list %}
+                                    <p>{{p.name}}</p>
+                                {% endfor %}
+                                {% if time.list|length < 0 %}
+                                    <img src="../static/img/sadwhale.png" class="img-responsive" />
+                                    <p>Nothing. Ever. Therefore Whalr is sad.</p>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
                         <section id="TodayMenu" class="group">
-            <div id="CrossRoads" class="subgroup">
-                <h2>Crossroads</h2>
-                    <div class="row">
-                    <div class="col-md-4">
-                        <h3>Breakfast</h3>
-                        <!--Display breakfast at Crossroads-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Lunch</h3>
-                        <!--Display lunch at Crossroads-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Dinner</h3>
-                        <!--Display dinner at Crossroads-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    </div> 
-            </div>
-            <div id="Cafe3" class="subgroup">
-                <h2>Cafe 3</h2>
-                    <div class="row">
-                    <div class="col-md-4">
-                        <h3>Breakfast</h3>
-                        <!--Display breakfast at Unit 3: this cell will be empty since Unit 3 usually only offers brunch-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Lunch</h3>
-                        <!--Display lunch at Unit 3-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Dinner</h3>
-                        <!--Display dinner at Unit 3-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    </div> 
-                
-            </div>
-            <div id="Foothill" class="subgroup">
-                <h2>Foothill</h2>
-                    <div class="row">
-                    <div class="col-md-4">
-                        <h3>Breakfast</h3>
-                        <!--Display breakfast at Foothill-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Lunch</h3>
-                        <!--Display lunch at Crossroads-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Dinner</h3>
-                        <!--Display dinner at Crossroads-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    </div> 
-                
-            </div>
-            <div id="CKC" class="subgroup">
-                <h2>Clark Kerr Campus</h2>
-                    <div class="row">
-                    <div class="col-md-4">
-                        <h3>Breakfast</h3>
-                        <!--Display breakfast at CKC-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Lunch</h3>
-                        <!--Display lunch at CKC (this will be empty too)-->
-                        <img src="../static/img/sadwhale.png" class="img-responsive" />
-                        <p>Nothing. Ever. Therefore Whalr is sad.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Dinner</h3>
-                        <!--Display dinner at CKC-->
-                        <li>aejifae fasjhldi  afsjdil fs</li>
-                        <li>asdhfla jcasdi hcouaaen </li>
-                        <li>c anace oahwc oijaw ecioj ads</li>
-                        <li>cnaei  cnia oi oiac joia efoij aef</li>
-                    </div>
-                    </div> 
-                
-            </div>
-        </section>   
+                            <div id="CrossRoads" class="subgroup">
+                                <h2>Crossroads</h2>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h3>Breakfast</h3>
+                                        <!--Display breakfast at Crossroads-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Lunch</h3>
+                                        <!--Display lunch at Crossroads-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Dinner</h3>
+                                        <!--Display dinner at Crossroads-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="Cafe3" class="subgroup">
+                                <h2>Cafe 3</h2>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h3>Breakfast</h3>
+                                        <!--Display breakfast at Unit 3: this cell will be empty since Unit 3 usually only offers brunch-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Lunch</h3>
+                                        <!--Display lunch at Unit 3-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Dinner</h3>
+                                        <!--Display dinner at Unit 3-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="Foothill" class="subgroup">
+                                <h2>Foothill</h2>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h3>Breakfast</h3>
+                                        <!--Display breakfast at Foothill-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Lunch</h3>
+                                        <!--Display lunch at Crossroads-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Dinner</h3>
+                                        <!--Display dinner at Crossroads-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="CKC" class="subgroup">
+                                <h2>Clark Kerr Campus</h2>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h3>Breakfast</h3>
+                                        <!--Display breakfast at CKC-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Lunch</h3>
+                                        <!--Display lunch at CKC (this will be empty too)-->
+                                        <img src="../static/img/sadwhale.png" class="img-responsive" />
+                                        <p>Nothing. Ever. Therefore Whalr is sad.</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h3>Dinner</h3>
+                                        <!--Display dinner at CKC-->
+                                        <li>aejifae fasjhldi afsjdil fs</li>
+                                        <li>asdhfla jcasdi hcouaaen</li>
+                                        <li>c anace oahwc oijaw ecioj ads</li>
+                                        <li>cnaei cnia oi oiac joia efoij aef</li>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -211,120 +241,168 @@
     <!-- /#wrapper -->
 
     <!-- Modal -->
-<div class="modal fade" id="addFood" tabindex="-1" role="dialog" aria-labelledby="addFood" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add Krill - Click on a food item to add it to your favorites</h4>
-      </div>
-      <div class="modal-body">
-        <div id="foods">
-  <input class="search" placeholder="Search" />
-  <button class="sort" data-sort="name">
-    Sort by name
-  </button>
+    <div class="modal fade" id="addFood" tabindex="-1" role="dialog" aria-labelledby="addFood" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add Krill - Click on a food item to add it to your favorites</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="foods">
+                        <input class="search" placeholder="Search" />
+                        <button class="sort" data-sort="name">
+                            Sort by name
+                        </button>
 
-  <ul class="list">
-    <li>
-      <a href="#"><p class="name">Jonny Stromberg</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swag</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Yolo Soup</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swaglicious</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Jonny Stromberg</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swag</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Yolo Soup</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swaglicious</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swaglicious</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Jonny Stromberg</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swag</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Yolo Soup</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swaglicious</p></a>
-    </li>
-  </ul>
+                        <ul class="list">
+                            <li>
+                                <a href="#">
+                                    <p class="name">Jonny Stromberg</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swag</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Yolo Soup</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swaglicious</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Jonny Stromberg</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swag</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Yolo Soup</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swaglicious</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swaglicious</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Jonny Stromberg</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swag</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Yolo Soup</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swaglicious</p>
+                                </a>
+                            </li>
+                        </ul>
 
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<div class="modal fade" id="manageFood" tabindex="-1" role="dialog" aria-labelledby="manageFood" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <h4 class="modal-title" id="myModalLabel">Manage Krill - Click on a food item to remove from favorites</h4>
-      </div>
-      <div class="modal-body">
-        <div id="foods">
-  <input class="search" placeholder="Search" />
-  <button class="sort btn-dark" data-sort="name">
-    Sort by name
-  </button>
+    <div class="modal fade" id="manageFood" tabindex="-1" role="dialog" aria-labelledby="manageFood" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Manage Krill - Click on a food item to remove from favorites</h4>
+                </div>
+                <div class="modal-body">
+                    <div id="foods">
+                        <input class="search" placeholder="Search" />
+                        <button class="sort btn-dark" data-sort="name">
+                            Sort by name
+                        </button>
 
-  <ul class="list">
-    <li>
-      <a href="#"><p class="name">Jonny Stromberg</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swag</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Yolo Soup</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swaglicious</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Jonny Stromberg</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swag</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Yolo Soup</p></a>
-    </li>
-    <li>
-      <a href="#"><p class="name">Swaglicious</p></a>
-    </li>
-  </ul>
+                        <ul class="list">
+                            <li>
+                                <a href="#">
+                                    <p class="name">Jonny Stromberg</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swag</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Yolo Soup</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swaglicious</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Jonny Stromberg</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swag</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Yolo Soup</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="name">Swaglicious</p>
+                                </a>
+                            </li>
+                        </ul>
 
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <!-- jQuery Version 1.11.0 -->
     <script src="../static/js/jquery-1.11.0.js"></script>
@@ -334,11 +412,11 @@
     <script src="../static/js/list.min.js"></script>
     <script>
     var options = {
-  valueNames: [ 'name' ]
-};
+        valueNames: ['name']
+    };
 
-var foodList = new List('foods', options);
-</script>
+    var foodList = new List('foods', options);
+    </script>
 
     <!-- Menu Toggle Script -->
     <script>

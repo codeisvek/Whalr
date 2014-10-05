@@ -31,11 +31,12 @@ class Food(db.Model):
 			location = "Nowhere"
 		self.location = location
 		if timeOfDay is None:
-			timeOfDay = "Never"
+			timeOfDay = "-1"
 		self.timeOfDay = timeOfDay
 		print(self.name)
 		print(self.calories)
-		print(self.location) 
+		print(self.location)
+		print(self.timeOfDay) 
 	def __repr__(self):
 		return '<name %r>' % self.name
 db.create_all()
