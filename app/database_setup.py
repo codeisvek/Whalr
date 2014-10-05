@@ -4,6 +4,7 @@ from .scraper import *
 from app import app
 db = SQLAlchemy(app)
 class Food(db.Model):
+	__tablename__ = "food"
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.Text)
 	calories = db.Column(db.Integer())
