@@ -1,0 +1,253 @@
+/*!
+ * Start Bootstrap - Stylish Portfolio Bootstrap Theme (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,600);
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    background: #0C9AAE url(../static/img/bgmain.png) repeat-x center top;
+    font-size: 14pt;
+    font-weight: 300;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) { 
+
+    body{
+        background: #0C9AAE url("../img/bgmain@2x.png") repeat-x center top;
+        background-size: 1440px 610px;
+    }
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+}
+
+/* landing page */
+
+.actions {
+    margin-top: 10%;
+    padding: 20px;
+}
+
+.actions h3 {
+    font-size: 19pt;
+    color: #397C87;
+    font-weight: 300;
+}
+
+.actions .litt a:link, .actions .litt a:visited{
+    color: #397C87;
+    font-weight: 300;
+}
+
+
+/* Custom Button Styles */
+
+.btn-dark {
+    border-bottom: 4px solid #BB9D11;
+    color: #fff;
+    background-color: #F7CF17;
+    margin: 10px;
+    width: 150px;
+    border-radius: 0px;
+}
+
+.btn-dark:hover,
+.btn-dark:focus,
+.btn-dark:active {
+    color: #fff;
+    background-color: #FFDE45;
+    border-bottom: 4px solid #C2A834;
+}
+
+.btn-light {
+    border-radius: 0;
+    color: #333;
+    background-color: rgb(255,255,255);
+}
+
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+}
+
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+/* Header */
+
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg.png) no-repeat center bottom scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.header #logo {
+    position: absolute;
+    width: 150px;
+    border-bottom: 3px solid #75A5B3;
+    background-color: #fff;
+
+}
+
+@media (max-width: 990px) {
+    #logo {
+        display: none;
+    }
+}
+
+/* navbar */
+
+.navbar-default {
+    background-color: #fff;
+    border-bottom: 3px solid #397C87;
+}
+
+.navbar-default h3{
+    margin: 10px;
+    letter-spacing: 2px;
+    color: #397C87;
+    font-weight: 600;
+}
+/* body */
+
+.section {
+    background-color: #fff;
+    padding: 30px;
+    border-bottom: 3px solid #397C87;
+}
+
+.list-group {
+    border-radius: 0px;
+    border-bottom: 3px solid #397C87;
+}
+
+.list-group-item{
+    border: 0px;
+    border-bottom: 1px solid #67BFD7;
+}
+
+.list-group-item:first-child {
+    border-radius: 0px;
+}
+
+.list-group-item:last-child{
+    border-radius: 0px;
+    border: 0px;
+}
+
+.list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus{
+    background-color: #67BFD7;
+    border: 0px;
+}
+
+/* modal */
+
+
+.user-modal .modal-content {
+    padding: 100px 0;
+    min-height: 100%;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    background-clip: border-box;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.user-modal .modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 3em;
+}
+
+.user-modal .modal-content p {
+    margin-bottom: 30px;
+}
+
+.user-modal .modal-content p.item-intro {
+    margin: 20px 0 30px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.user-modal .modal-content ul.list-inline {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.user-modal .modal-content img {
+    margin-bottom: 30px;
+}
+
+.user-modal .close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 25px;
+    height: 25px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.user-modal .close-modal:hover {
+    opacity: .3;
+}
+
+.user-modal .close-modal .lr {
+    z-index: 1051;
+    width: 1px;
+    height: 25px;
+    margin-left: 35px;
+    background-color: #222;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.user-modal .close-modal .lr .rl {
+    z-index: 1052;
+    width: 1px;
+    height: 25px;
+    background-color: #222;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.formm {
+    
+}
