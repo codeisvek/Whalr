@@ -5,8 +5,8 @@ from app import app, lm, oid
 from .database_setup import db, Food
 from .forms import LoginForm
 from .models import User
-from datetime import datetime
 from .scraper import *
+import datetime
 
 @app.route('/')
 @app.route('/index')
@@ -23,10 +23,7 @@ def index():
             'body': 'The Avengers movie was so cool!' 
         }
     ]
-    return render_template('index.html',
-                           title='Home',
-                           user=user,
-                           posts=posts)
+    return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 @oid.loginhandler
@@ -37,9 +34,7 @@ def login():
     if form.validate_on_submit():
         session['remember_me'] = form.remember_me.data
         return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
-    return render_template('login.html', 
-                           title='Sign In',
-                           form=form,
+    return render_template('login.html', form=form,
                            providers=app.config['OPENID_PROVIDERS'])
 
 @app.route('/user/<nickname>')
