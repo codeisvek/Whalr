@@ -31,7 +31,7 @@ def view_app():
 @oid.loginhandler
 def login():
     if g.user is not None and g.user.is_authenticated():
-        return redirect('/app')
+        return redirect('/app', code=302)
     form = LoginForm()
     if form.validate_on_submit():
         session['remember_me'] = form.remember_me.data
