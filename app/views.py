@@ -33,12 +33,8 @@ def login():
     if g.user is not None and g.user.is_authenticated():
         return redirect('/app', code=302)
     form = LoginForm()
-    if form.validate_on_submit():
-        session['remember_me'] = form.remember_me.data
-        return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
-    return render_template('login.html', form=form,
-                           providers=app.config['OPENID_PROVIDERS'])
-
+    form.openid.data = 'https://www.google.com/accounts/o8/id'
+    return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
 @app.route('/user/<nickname>')
 @login_required
 def user(nickname):
