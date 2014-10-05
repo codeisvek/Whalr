@@ -43,8 +43,8 @@
             <h3>
                 <strong>Whalr</strong>lets you know when the Cal dining halls have your favorite foods</h3>
             <br>
-            <a href="#urerModal1" data-target="#userModal1" data-toggle="modal" class="btn btn-dark btn-lg">Sign Me Up!</a>
-            <a href="#userModal2" data-target="#userModal2" data-toggle="modal" class="btn btn-dark btn-lg">Login</a>
+            <a href="#" data-target="#register" data-toggle="modal" class="btn btn-dark btn-lg">Sign Me Up!</a>
+            <a href="#" data-target="#login" data-toggle="modal" class="btn btn-dark btn-lg">Login</a>
             <br>
             <br>
             <span class="litt"><a href="#">Learn More</a>
@@ -52,7 +52,7 @@
         </div>
     </header>
     <!-- jQuery Version 1.11.0 -->
-
+<!--
     <div class="user-modal modal fade" id="userModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -83,10 +83,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- Portfolio Modal 2 -->
-    <div class="user-modal modal fade" id="userModal2" tabindex="-1" role="dialog" aria-hidden="true">
+    <!--<div class="user-modal modal fade" id="userModal2" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
                 <div class="lr">
@@ -99,7 +99,7 @@
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
                             <h3>Login To Whalr</h3>
-                            <form action="/login" method="POST">
+                            <form action="/login" method="POST">-->
                                 <!--<div class="col-xs-6 col-lg-offset-3">
                                     Username:
                                     <input class="formm" name="username" type="text" />Password:
@@ -109,7 +109,7 @@
                                     <br />
                                     <br />
                                     <input type="submit" class="btn btn-dark submit-message"></input>
-                                </div>-->
+                                </div>--><!--
                             </form>
                         </div>
                     </div>
@@ -117,6 +117,49 @@
             </div>
         </div>
     </div>
+-->
+    <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="register" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Register for Whalr</h4>
+      </div>
+      <div class="modal-body">
+
+        Username:
+                                    <input class="formm" name="username" type="text" />Password:
+                                    <input class="formm" name="password" type="password" />Password Again:
+                                    <input name="password2" type="password2" />
+                                    <br />
+                                    <br />
+                                    <input type="submit" class="btn btn-dark submit-message"></input>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">Login to Whalr</h4>
+      </div>
+      <div class="modal-body">
+            BLANK
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <script src="../static/js/jquery-1.11.0.js"></script>
     <script src="../static/js/ajax.js"></script>

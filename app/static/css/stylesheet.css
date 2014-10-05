@@ -251,3 +251,13 @@ body {
 .formm {
     
 }
+
+/*modal box*/
+.modal-content{
+    border-radius: 0;
+}
+
+.search, .sort, input{
+    width: 100%;
+    height: 50px;
+}
