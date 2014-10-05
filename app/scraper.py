@@ -27,6 +27,9 @@ def serve_day(soup):
 	return datetime.date(int(days[0][2]), months[days[0][0]], int(days[0][1]))
 #find food names
 def find_food(soup):
+	#name = [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
+	#location = [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
+	#time = [a.get_text() for a in soup.select('td#content tr[valign=top] td a')]
 	foods = []
 	x = 0
 	y = 0

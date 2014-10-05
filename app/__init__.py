@@ -1,13 +1,14 @@
-
 import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
 from config import basedir
-from .scraper import *
+
 app = Flask(__name__)
+#setting up config file
 app.config.from_object('config')
+#initializing db
 db = SQLAlchemy(app)
 lm = LoginManager()
 lm.init_app(app)

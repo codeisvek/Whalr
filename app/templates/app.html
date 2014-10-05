@@ -94,8 +94,9 @@
 
                         </div>
                         <h2>Today's Menu</h2>
+                        {{ food }}
                         {% for place in food|groupby('location') %}
-                            <h2>{{places[place.grouper|int]}}</h2>
+                            <h2>{{places[place.grouper|int]|pprint}}</h2>
                             {% for time in place.list|groupby('timeOfDay') %}
                                 {% if time.grouper != loop.index0 %}
                                     <img src="../static/img/sadwhale.png" class="img-responsive" />
