@@ -6,7 +6,6 @@ from .database_setup import db, Food
 from .forms import LoginForm
 from .models import User
 from .scraper import *
-import datetime
 
 @app.route('/')
 @app.route('/index')
@@ -24,12 +23,15 @@ def index():
         }
     ]
     return render_template('index.html')
-
+@app.route('/app')
+@login_required
+def view_app():
+    return render_template('app.html')
 @app.route('/login', methods=['GET', 'POST'])
 @oid.loginhandler
 def login():
     if g.user is not None and g.user.is_authenticated():
-        return redirect(url_for('index'))
+        return redirect('/app')
     form = LoginForm()
     if form.validate_on_submit():
         session['remember_me'] = form.remember_me.data
@@ -84,15 +86,15 @@ def after_login(resp):
         remember_me = session['remember_me']
         session.pop('remember_me', None)
     login_user(user, remember = remember_me)
-    return redirect(request.args.get('next') or url_for('index'))
+    return redirect('/app', code=302)
 
 @app.before_request
 def before_request():
     g.user = current_user
     if g.user.is_authenticated():
-        g.user.last_seen = datetime.utcnow()
-        db.session.add(g.user)
-        db.session.commit()
+        #db.session.add(g.user)
+        #db.session.commit()
+        print('myasss')
 
 from .forms import LoginForm, EditForm
 
